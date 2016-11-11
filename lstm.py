@@ -62,7 +62,7 @@ def lstm(path='/home/luffy/Desktop/assignment_3/human_action_3.txt',nb_epoch=20,
 	model.add(LSTM(128, input_shape=(maxlen, len(chars))))
 	model.add(Dense(len(chars)))
 	model.add(Activation('softmax'))
-	#model.load_weights("lstm_model_for_human_action_book.h5")
+	model.load_weights("lstm_model_for_human_action_book.h5")
 	model.compile(loss='categorical_crossentropy', optimizer=RMSprop(lr=0.01))
 	model.fit(X, y, batch_size=batch_size, nb_epoch=nb_epoch)
 	''' Sving the model in .json format and weights in HDF5 format'''
@@ -120,5 +120,5 @@ def sample(preds,temperature = 1.0):
 
 if __name__ == '__main__':
 	'''In case you want to explicitely train your data uncomment the command lstm'''
-	lstm(nb_epoch=50,batch_size=2000)
+	lstm(nb_epoch=15,batch_size=3000)
 	generate_text()
