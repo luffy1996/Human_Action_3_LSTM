@@ -54,6 +54,9 @@ for i, sentence in enumerate(sentences):
 ##############################################
 
 def generate_lstm(inputno):
+	text_file = open("Output_150107048_lstm.txt", "w")
+
+
 	while (inputno > 0):
 
 		json_file = open('lstm_model_for_human_action_book.json', 'r')
@@ -88,7 +91,15 @@ def generate_lstm(inputno):
 			sys.stdout.write(next_char)
 			sys.stdout.flush()
 		print()
+		text_file.write(generated)
+		text_file.write("\n")
+		text_file.write("\n")
+		text_file.write("######################################")	
+		text_file.write("######################################")
+		text_file.write("\n")
+		text_file.write("\n")
 		inputno = inputno -1 
+	text_file.close()	
 
 def sample(preds,temperature = 1.0):
 	# helper function to sample an index from a probability array
